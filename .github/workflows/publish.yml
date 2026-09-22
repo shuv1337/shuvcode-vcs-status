@@ -20,7 +20,7 @@ jobs:
           registry-url: https://registry.npmjs.org
       - uses: taiki-e/install-action@v2
         with:
-          tool: jj@0.40.0
+          tool: jj-cli@0.40.0
       - run: bun install --frozen-lockfile
       - name: Verify release version
         env:
