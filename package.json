@@ -1,0 +1,43 @@
+{
+  "name": "shuvcode-vcs-status",
+  "version": "0.1.0",
+  "license": "MIT",
+  "repository": { "type": "git", "url": "git+https://github.com/shuv1337/shuvcode-vcs-status.git" },
+  "homepage": "https://github.com/shuv1337/shuvcode-vcs-status#readme",
+  "bugs": { "url": "https://github.com/shuv1337/shuvcode-vcs-status/issues" },
+  "files": ["dist", "README.md", "LICENSE"],
+  "publishConfig": { "access": "public" },
+  "type": "module",
+  "description": "Git and Jujutsu repository status for the OpenCode V2 sidebar",
+  "exports": {
+    ".": "./dist/index.js",
+    "./tui": "./dist/tui.js"
+  },
+  "scripts": {
+    "test": "bun test",
+    "typecheck": "tsgo --noEmit",
+    "check": "bun run typecheck && bun test",
+    "build": "bun script/build.ts",
+    "prepack": "bun run build",
+    "test:package": "bun script/test-package.ts",
+    "prepublishOnly": "bun run check && bun run test:package"
+  },
+  "dependencies": {
+    "@opencode/plugin": "2.0.8",
+    "zod": "4.1.8"
+  },
+  "peerDependencies": {
+    "@opentui/core": ">=0.5.10 <0.6",
+    "@opentui/solid": ">=0.5.10 <0.6",
+    "solid-js": ">=1.9.0 <2"
+  },
+  "devDependencies": {
+    "@opencode/theme": "2.0.8",
+    "@opentui/core": "0.5.10",
+    "@opentui/solid": "0.5.10",
+    "solid-js": "1.9.12",
+    "@tsconfig/bun": "1.0.9",
+    "@types/bun": "1.4.0",
+    "@typescript/native-preview": "7.0.0-dev.20251207.1"
+  }
+}
