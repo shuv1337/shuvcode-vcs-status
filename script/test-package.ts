@@ -28,7 +28,7 @@ try {
     private: true,
     type: "module",
     dependencies: {
-      "shuvcode-vcs-status": `file:./${packed.filename}`,
+      "shuvcode-vcs-status": process.env.PUBLISHED_VERSION ?? `file:./${packed.filename}`,
       "@opentui/core": "0.5.10",
       "@opentui/solid": "0.5.10",
       "@opencode/theme": "2.0.8",
@@ -78,7 +78,7 @@ test("packed server registers and reads its location; packed TUI mounts its slot
 `)
   // No workspace links: all runtime dependencies resolve from this disposable installation.
   console.log(await run(["bun", "test", "--preload", "@opentui/solid/preload", "./smoke.tsx"], temporary))
-  console.log(`Verified ${packed.filename}: ${files.length} shipping files; server and TUI entrypoints loaded.`)
+  console.log(`Verified ${process.env.PUBLISHED_VERSION ? `npm shuvcode-vcs-status@${process.env.PUBLISHED_VERSION}` : packed.filename}: server and TUI entrypoints loaded.`)
 } finally {
   await rm(temporary, { recursive: true, force: true })
 }
